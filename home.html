@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Library Users</title>
+  
+  
+  
+      <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+
+  
+</head>
+<form action="/search" method="GET"> 
+  <input type="text" name="req" class="search" placeholder="Search with Name">
+  <input type="submit" name="submit" class="submit" value="Search" style="background-color:blue">
+</form>
+<body>
+  <div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Last name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		{% for row in result %}
+			<tr>
+				<td>{{row.id}}</td>
+				<td>{{row.name}}</td>
+				<td>{{row.lastname}}</td>
+				<td>{{row.email}}</td>
+				<td>{{row.phone}}</td>
+				<td>
+				<button style="background-color:red">
+				
+				<a href="/delete/{{row.id}}">Delete</a>
+				
+				</button>
+				<button style="background-color:yellow">
+				<a href="/edit/{{row.id}}">Edit</a>
+				</button>
+				</td>
+
+			</tr>
+		{% endfor %} 
+		    <tr>
+			 <td> <button style="background-color:green">
+
+				 <a href="{{url_for('register')}}">Register</a>
+
+				 </button> 
+			     
+			 </td>
+								 
+
+				
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+  
+</body>
+</html>
